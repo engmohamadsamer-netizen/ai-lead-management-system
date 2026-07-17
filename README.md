@@ -1,70 +1,86 @@
 <p align="center">
-  <img src="assets/logo-horizontal.png" alt="OXIVAR AI" width="320">
+  <img src="assets/logo-horizontal.png" alt="OXIVAR AI" width="340">
 </p>
 
 <h1 align="center">AI Lead Management System</h1>
 
 <p align="center">
-Automated Lead Collection • AI Responses • Google Sheets CRM • Email Automation
+An intelligent workflow built with <strong>n8n</strong>, <strong>Google Gemini</strong>, <strong>Google Sheets</strong>, and <strong>Gmail API</strong> to automate lead management from submission to follow-up.
 </p>
 
 ---
 
-## 📌 Overview
+# 📌 Overview
 
-The AI Lead Management System automates the entire customer inquiry process.
+The **AI Lead Management System** streamlines customer inquiry handling by automating the complete lead management process.
 
-When a visitor submits the contact form, the workflow:
+From the moment a visitor submits the contact form, the workflow automatically:
 
-- Collects lead information
+- Collects customer information
 - Generates an AI-powered response using Google Gemini
-- Stores all data in Google Sheets
-- Sends a professional confirmation email to the customer
-- Instantly notifies the business owner
+- Stores the lead inside Google Sheets
+- Sends a professional HTML confirmation email
+- Notifies the business owner instantly
 
 ---
 
-## ✨ Features
+# ✨ Features
 
-- 🤖 AI-generated responses
-- 📋 Automatic lead collection
-- 📊 Google Sheets CRM
+- 🤖 AI-generated customer responses
+- 📋 Automated lead collection
+- 📊 Google Sheets CRM integration
 - 📧 Professional HTML email confirmation
-- 🔔 Business owner notification
-- ⚡ Fully automated workflow built with n8n
+- 🔔 Instant business owner notifications
+- ⚡ Fully automated workflow powered by n8n
 
 ---
 
-## 🛠 Tech Stack
+# 🛠 Tech Stack
 
-- n8n
-- Google Gemini API
-- Gmail API
-- Google Sheets API
-
----
-
-## 📸 Screenshots
-
-### Workflow
-
-> *(Add screenshot here)*
-
-### Contact Form
-
-> *(Add screenshot here)*
-
-### Confirmation Email
-
-> *(Add screenshot here)*
-
-### Google Sheets Database
-
-> *(Add screenshot here)*
+| Technology | Purpose |
+|------------|---------|
+| n8n | Workflow Automation |
+| Google Gemini | AI Response Generation |
+| Gmail API | Email Automation |
+| Google Sheets API | Lead Storage |
 
 ---
 
-## 🚀 Workflow Overview
+# 📸 Screenshots
+
+## Workflow
+
+<p align="center">
+<img src="screenshots/workflow.png" width="100%">
+</p>
+
+---
+
+## Contact Form
+
+<p align="center">
+<img src="screenshots/form.png" width="100%">
+</p>
+
+---
+
+## Customer Confirmation Email
+
+<p align="center">
+<img src="screenshots/email.png" width="100%">
+</p>
+
+---
+
+## Google Sheets Lead Database
+
+<p align="center">
+<img src="screenshots/google-sheet.png" width="100%">
+</p>
+
+---
+
+# 🔄 Workflow Overview
 
 ```text
 Lead Form
@@ -83,18 +99,65 @@ Save Lead to Google Sheets
 
 ---
 
-## 🎯 Business Benefits
+# 💼 Business Benefits
 
-- Faster customer communication
-- Reduced manual work
-- Centralized lead management
-- Professional customer experience
-- Immediate notification for new leads
+✅ Faster customer communication
+
+✅ Zero manual lead handling
+
+✅ AI-powered customer engagement
+
+✅ Centralized lead database
+
+✅ Professional customer experience
+
+✅ Instant lead notifications
 
 ---
 
-## 📄 License
+# 🚀 Future Improvements
 
-This project is part of the OXIVAR AI automation portfolio.
+- CRM Integration
+- Lead Status Tracking
+- Dashboard & Analytics
+- Multi-language Support
+- PDF Proposal Generation
+- Calendar Booking Integration
 
-© OXIVAR AI
+---
+
+# 📂 Project Structure
+
+```text
+Oxivar-Ai/
+│
+├── assets/
+│   └── logo-horizontal.png
+│
+├── screenshots/
+│   ├── workflow.png
+│   ├── form.png
+│   ├── email.png
+│   └── google-sheet.png
+│
+├── workflows/
+│   └── ai-lead-management.json
+│
+└── README.md
+```
+
+---
+
+# 👨‍💻 About OXIVAR AI
+
+**OXIVAR AI** builds intelligent automation solutions that help businesses streamline operations, improve customer experience, and reduce repetitive manual work using modern AI-powered workflows.
+
+---
+
+<p align="center">
+
+### Built with ❤️ using n8n & Google Gemini
+
+© 2026 OXIVAR AI
+
+</p>
