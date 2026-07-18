@@ -1,0 +1,357 @@
+{
+  "name": "OXIVAR AI | AI Lead Management System (Public)",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "AI Customer Support",
+        "formDescription": "املأ البيانات وسنرد عليك باستخدام الذكاء الاصطناعي.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Name"
+            },
+            {
+              "fieldLabel": "Service"
+            },
+            {
+              "fieldLabel": "Question"
+            },
+            {
+              "fieldLabel": "Email",
+              "fieldType": "email"
+            }
+          ]
+        },
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.6,
+      "position": [
+        0,
+        0
+      ],
+      "id": "8b5bbf43-5560-4d63-9e2b-4b4406e3b4df",
+      "name": "Lead Form",
+      "webhookId": "43c429be-43a7-449c-812e-fe057661471a"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent...?key={{GEMINI_API_KEY}}",
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\n  \"contents\": [\n    {\n      \"parts\": [\n        {\n          \"text\": \"انت موظف خدمة عملاء محترف لشركة OXIVAR AI.\\n\\nاسم العميل هو: {{ $json.Name }}\\nالخدمة هي: {{ $json.Service }}\\nسؤال العميل هو: {{ $json.Question }}\\n\\nاكتب رد احترافي وودود ومباشر لحل مشكلة العميل أو الإجابة على سؤاله.\\n\\nStrict Instructions:\\n- Do not include any greeting (like Dear, Hello, etc.).\\n- Do not include any closing sentences, signatures, placeholders, or contact information.\\n- Never put brackets like [Company Name] or placeholders.\\n- Only return the main response body text directly.\"\n        }\n      ]\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "b7b37940-9f9d-40c0-9680-93f6d22399a6",
+      "name": "Generate AI Response"
+    },
+    {
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1UbkPOJbd1PAoJ3R6JWXW4W3eEVzZ3hsWWRalU4sObCA",
+          "mode": "list",
+          "cachedResultName": "AI Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1UbkPOJbd1PAoJ3R6JWXW4W3eEVzZ3hsWWRalU4sObCA/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "الورقة1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1UbkPOJbd1PAoJ3R6JWXW4W3eEVzZ3hsWWRalU4sObCA/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $('Lead Form').item.json.Name }}",
+            "Service": "={{ $('Lead Form').item.json.Service }}",
+            "Question": "={{ $('Lead Form').item.json.Question }}",
+            "Email": "={{ $('Lead Form').item.json.Email }}",
+            "Reply": "={{ $json.replay }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Service",
+              "displayName": "Service",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Question",
+              "displayName": "Question",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Reply",
+              "displayName": "Reply",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        592,
+        0
+      ],
+      "id": "54b660b6-1647-4806-9d82-52a319aec4a7",
+      "name": "Save Lead to Google Sheets",
+      "credentials": {
+        "googleApi": {
+          "id": "ZZSJEZeLb2UoyUPP",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.Email }}",
+        "subject": "Thank you for contacting OXIVAR AI",
+        "message": "=<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"UTF-8\">\n</head>\n\n<body style=\"margin:0;padding:0;background:#f4f7fb;font-family:Arial,Helvetica,sans-serif;\">\n\n<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f4f7fb;padding:40px 0;\">\n<tr>\n<td align=\"center\">\n\n<table width=\"600\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#ffffff;border-radius:10px;overflow:hidden;\">\n\n<tr>\n<td style=\"background:#1e3a8a;padding:30px;text-align:center;\">\n\n<img\nsrc=\"https://raw.githubusercontent.com/engmohamadsamer-netizen/Oxivar-Ai/refs/heads/main/assets/logo-horizontal.png\"\nalt=\"OXIVAR AI\"\nstyle=\"height:55px;display:block;margin:auto;\">\n\n</td>\n</tr>\n\n<tr>\n<td style=\"padding:35px;\">\n\n<h2 style=\"margin-top:0;color:#111827;\">\nHello {{ $('Lead Form').item.json.Name }},\n</h2>\n\n<p style=\"color:#4b5563;font-size:16px;line-height:1.6;\">\nThank you for contacting <strong>OXIVAR AI</strong>.\nWe have successfully received your request.\n</p>\n\n<hr style=\"border:none;border-top:1px solid #e5e7eb;margin:25px 0;\">\n\n<p style=\"margin:0;color:#6b7280;font-size:14px;\">\nRequested Service\n</p>\n\n<p style=\"margin-top:8px;font-size:18px;color:#111827;\">\n<strong>{{ $('Lead Form').item.json.Service }}</strong>\n</p>\n\n<hr style=\"border:none;border-top:1px solid #e5e7eb;margin:25px 0;\">\n\n<p style=\"margin:0;color:#6b7280;font-size:14px;\">\nAI Response\n</p>\n\n<p style=\"margin-top:8px;font-size:16px;color:#111827;line-height:1.7;\">\n{{ $json.Reply }}\n</p>\n\n<hr style=\"border:none;border-top:1px solid #e5e7eb;margin:30px 0;\">\n\n<p style=\"font-size:15px;color:#4b5563;\">\nIf you have any questions, simply reply to this email.\nWe'll be happy to assist you.\n</p>\n\n<hr style=\"border:none;border-top:1px solid #e5e7eb;margin:35px 0;\">\n\n<table cellpadding=\"0\" cellspacing=\"0\" style=\"width:100%;\">\n<tr>\n\n<td width=\"70\">\n<img src=\"https://raw.githubusercontent.com/engmohamadsamer-netizen/Oxivar-Ai/refs/heads/main/assets/logo-horizontal.png\"\nalt=\"OXIVAR AI\"\nstyle=\"height:45px;display:block;\">\n</td>\n\n<td style=\"padding-left:15px;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#374151;line-height:1.6;\">\n\n<strong style=\"font-size:16px;\">OXIVAR AI</strong><br>\n\n<span style=\"color:#6b7280;\">\nIntelligent Automation Solutions\n</span>\n\n<br><br>\n\n<span style=\"color:#9ca3af;\">\nBusiness Website: Coming Soon\n</span>\n\n<br>\n\n<span style=\"color:#9ca3af;\">\nBusiness Email: Coming Soon\n</span>\n\n</td>\n\n</tr>\n</table>\n\n</td>\n</tr>\n\n</table>\n\n</td>\n</tr>\n</table>\n\n</body>\n</html>",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        848,
+        -48
+      ],
+      "id": "84f92410-afd3-4fa3-8345-5290473767c7",
+      "name": "Send Confirmation Email",
+      "webhookId": "f9c65e8c-4135-4302-b53c-e4cdb2a195e8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "vjVsOR0MZhpVGXAr",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "business@oxivar.ai",
+        "subject": "🔔 New Lead Received - OXIVAR AI",
+        "message": "=<h2>🔔 New Lead Received</h2>\n\n<p><strong>Name:</strong><br>\n{{ $('Save Lead to Google Sheets').item.json.Name }}</p>\n\n<p><strong>Email:</strong><br>\n{{ $('Save Lead to Google Sheets').item.json.Email }}</p>\n\n<p><strong>Requested Service:</strong><br>\n{{ $('Save Lead to Google Sheets').item.json.Service }}</p>\n\n<p><strong>Question:</strong><br>\n{{ $('Save Lead to Google Sheets').item.json.Question }}</p>\n\n<p><strong>AI Response:</strong><br>\n{{ $('Save Lead to Google Sheets').item.json.Reply }}</p>\n\n<p><strong>Submitted at:</strong><br>\n{{ $now }}</p>",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        848,
+        160
+      ],
+      "id": "e5b0c1d8-e7f2-4cdb-bb6a-cb3f3dd9d07c",
+      "name": "Notify Business Owner",
+      "webhookId": "39785061-1fd3-4a2d-b01d-8a165502601b",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "vjVsOR0MZhpVGXAr",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "Lead Collection",
+        "height": 80,
+        "width": 150
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -32,
+        -144
+      ],
+      "typeVersion": 1,
+      "id": "01eed637-ce79-4faa-84f5-eb8b5045c044",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "AI Processing & Data Preparation",
+        "height": 80,
+        "width": 278
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        224,
+        -144
+      ],
+      "typeVersion": 1,
+      "id": "e2110fe9-cacf-4955-95a0-58bbc623fc19",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "      \nData Storage",
+        "height": 80,
+        "width": 150
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        576,
+        -144
+      ],
+      "typeVersion": 1,
+      "id": "ee78cef3-d272-4b95-9637-845363d779e0",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "Notifications",
+        "height": 80,
+        "width": 150
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        832,
+        -144
+      ],
+      "typeVersion": 1,
+      "id": "a926fbe9-0813-49b6-a3b7-ec1692c35071",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fbb1a254-3526-4811-b016-d61ef810f7c9",
+              "name": "replay",
+              "value": "={{ $json.candidates[0].content.parts[0].text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        416,
+        0
+      ],
+      "id": "7a6e26ec-bfda-4f27-a0a1-5f8438bac948",
+      "name": "Prepare Lead Data"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Lead Form": {
+      "main": [
+        [
+          {
+            "node": "Generate AI Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate AI Response": {
+      "main": [
+        [
+          {
+            "node": "Prepare Lead Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Lead to Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Send Confirmation Email",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Notify Business Owner",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Confirmation Email": {
+      "main": [
+        []
+      ]
+    },
+    "Prepare Lead Data": {
+      "main": [
+        [
+          {
+            "node": "Save Lead to Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "727db9e2-d9a0-4657-8bd6-1dc16f60e259",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "8763a3b2b8124af353e72dc24a8cbbffea6136f869e28a352df7da9bde435628"
+  },
+  "nodeGroups": [],
+  "id": "pcO5FK1QdQhZsMkA",
+  "tags": []
+}
