@@ -5,11 +5,21 @@
 <h1 align="center">AI Lead Management System</h1>
 
 <p align="center">
-An intelligent workflow built with <strong>n8n</strong>, <strong>Google Gemini</strong>, <strong>Google Sheets</strong>, and <strong>Gmail API</strong> to automate lead management from submission to follow-up.
+An AI-powered workflow that automates lead collection, response generation, email communication, and CRM updates using n8n, Google Gemini, Gmail, and Google Sheets.
+</p>
+
+<p align="center">
+
+![Platform](https://img.shields.io/badge/n8n-Automation-orange)
+![AI](https://img.shields.io/badge/Google-Gemini-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
+
 </p>
 
 ---
 
+# 📌 Overview
 # 📌 Overview
 
 The **AI Lead Management System** streamlines customer inquiry handling by automating the complete lead management process.
