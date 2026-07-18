@@ -20,7 +20,6 @@ An AI-powered workflow that automates lead collection, response generation, emai
 ---
 
 # 📌 Overview
-# 📌 Overview
 
 The **AI Lead Management System** streamlines customer inquiry handling by automating the complete lead management process.
 
