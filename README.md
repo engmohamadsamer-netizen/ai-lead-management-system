@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="assets/logo-horizontal.png" alt="OXIVAR AI" width="340">
+  <img src="assets/logo-horizontal.png" alt="OXIVAR AI" width="420">
 </p>
 
 <h1 align="center">AI Lead Management System</h1>
 
 <p align="center">
-An AI-powered workflow that automates lead collection, response generation, email communication, and lead storage using n8n, Google Gemini, Gmail, and Google Sheets.
+An AI-powered workflow that automates lead collection, AI response generation, email communication, and lead management using n8n, Google Gemini, Gmail, and Google Sheets.
 </p>
 
 <p align="center">
@@ -17,21 +17,25 @@ An AI-powered workflow that automates lead collection, response generation, emai
 
 </p>
 
+<p align="center">
+<b>Automate your lead management from submission to follow-up with AI-powered workflows.</b>
+</p>
+
 ---
 
 # 📌 Overview
 
-The **AI Lead Management System** is an intelligent automation workflow designed to eliminate manual lead handling.
+The **AI Lead Management System** is an intelligent workflow that automates the complete lead management process.
 
-Once a visitor submits the contact form, the system automatically:
+Once a customer submits the contact form, the system automatically:
 
-- Collects lead information
-- Generates an AI-powered response using Google Gemini
-- Stores the lead in Google Sheets
-- Sends a professional HTML confirmation email
-- Notifies the business owner instantly
+- 📥 Collects lead information
+- 🤖 Generates an AI-powered response using Google Gemini
+- 📊 Stores the lead in Google Sheets
+- 📧 Sends a professional HTML confirmation email
+- 🔔 Notifies the business owner instantly
 
-The entire process is fully automated with **n8n**, reducing manual work while improving customer response time.
+The entire workflow is built with **n8n**, reducing manual work while improving customer response time and consistency.
 
 ---
 
@@ -39,12 +43,13 @@ The entire process is fully automated with **n8n**, reducing manual work while i
 
 - Features
 - Tech Stack
-- Workflow
+- Workflow Overview
+- Demo
 - Screenshots
 - Project Structure
 - Installation
 - Business Benefits
-- Future Improvements
+- Future Roadmap
 - About OXIVAR AI
 
 ---
@@ -53,11 +58,12 @@ The entire process is fully automated with **n8n**, reducing manual work while i
 
 - 🤖 AI-generated customer replies
 - 📋 Automatic lead collection
-- 📊 Google Sheets integration
-- 📧 Professional HTML email confirmation
+- 📧 Professional HTML confirmation emails
+- 📊 Google Sheets lead database
 - 🔔 Instant business owner notifications
-- ⚡ End-to-end automation with n8n
+- ⚡ Fully automated workflow powered by n8n
 - 🔒 Secure credential management
+- 🧩 Easy to customize for different businesses
 
 ---
 
@@ -72,22 +78,31 @@ The entire process is fully automated with **n8n**, reducing manual work while i
 
 ---
 
-# 🔄 Workflow
+# 🔄 Workflow Overview
 
 ```text
-Customer Form
-      │
-      ▼
+Customer Contact Form
+          │
+          ▼
+Receive Lead
+          │
+          ▼
 Generate AI Response
-      │
-      ▼
+          │
+          ▼
 Prepare Lead Data
-      │
-      ▼
-Save Lead into Google Sheets
-      ├────────► Send Confirmation Email
-      └────────► Notify Business Owner
+          │
+          ▼
+Save Lead to Google Sheets
+          ├────────► Send HTML Confirmation Email
+          └────────► Notify Business Owner
 ```
+
+---
+
+# 🎬 Demo
+
+*A short workflow demonstration GIF will be added soon.*
 
 ---
 
@@ -117,7 +132,7 @@ Save Lead into Google Sheets
 
 ---
 
-## Google Sheets Database
+## Google Sheets Lead Database
 
 <p align="center">
 <img src="screenshots/google-sheet.png" width="100%">
@@ -128,18 +143,18 @@ Save Lead into Google Sheets
 # 📂 Project Structure
 
 ```text
-ai-lead-management-system
+ai-lead-management-system/
 │
-├── assets
+├── assets/
 │   └── logo-horizontal.png
 │
-├── screenshots
+├── screenshots/
 │   ├── workflow.png
 │   ├── form.png
 │   ├── email.png
 │   └── google-sheet.png
 │
-├── workflows
+├── workflows/
 │   └── ai-lead-management-system.json
 │
 ├── LICENSE
@@ -151,12 +166,12 @@ ai-lead-management-system
 
 # 🚀 Installation
 
-1. Import the workflow into n8n.
-2. Configure your own credentials:
+1. Import the workflow into **n8n**.
+2. Configure **your own** credentials:
    - Google Gemini API
    - Gmail
    - Google Sheets
-3. Update the Google Sheet destination.
+3. Select your Google Sheets document.
 4. Activate the workflow.
 5. Start receiving AI-powered leads automatically.
 
@@ -164,38 +179,46 @@ ai-lead-management-system
 
 # 💼 Business Benefits
 
-- Reduce manual work
-- Faster customer response time
-- Professional customer communication
-- Centralized lead database
-- AI-powered workflow
-- Easily customizable and scalable
+- Save hours of manual work
+- Respond to customers instantly
+- Deliver consistent AI-powered communication
+- Centralize lead management
+- Improve customer experience
+- Scale your workflow with minimal effort
 
 ---
 
-# 🔮 Future Improvements
+# 🔮 Future Roadmap
 
 - CRM Integration
-- Dashboard & Analytics
+- Analytics Dashboard
 - Lead Status Tracking
 - Multi-language Support
 - PDF Proposal Generator
 - Calendar Booking Integration
+- Slack & Discord Notifications
 
 ---
 
 # 👨‍💻 About OXIVAR AI
 
-**OXIVAR AI** develops intelligent automation systems that help businesses streamline operations, improve customer engagement, and eliminate repetitive tasks through AI-powered workflows.
+**OXIVAR AI** develops intelligent automation solutions that help businesses streamline operations, improve customer communication, and eliminate repetitive work using modern AI-powered workflows.
 
-This repository is part of the **OXIVAR AI Automation Portfolio**.
+This repository is part of the official **OXIVAR AI Automation Portfolio**, showcasing real-world automation systems built with AI and no-code technologies.
+
+---
+
+## ⭐ Support
+
+If you found this project useful, consider giving it a ⭐ on GitHub.
 
 ---
 
 <p align="center">
+<b>Built with ❤️ using n8n & Google Gemini</b>
 
-### Built with ❤️ using n8n & Google Gemini
+<br><br>
 
-© 2026 OXIVAR AI
+© 2026 <b>OXIVAR AI</b>
 
 </p>
