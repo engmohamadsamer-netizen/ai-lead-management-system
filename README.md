@@ -215,8 +215,7 @@ If you found this project useful, consider giving it a ⭐ on GitHub.
 
 ## 📄 License
 
-This project is licensed under the MIT License.
-
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 ---
 
 <p align="center">
