@@ -13,12 +13,10 @@ An AI-powered workflow that automates lead collection, AI response generation, e
 </p>
 
 <p align="center">
-
-![n8n](https://img.shields.io/badge/n8n-FF6C37?style=flat&logo=n8n&logoColor=white) ![Google Gemini](https://img.shields.io/badge/Google%20Gemini-8E75C2?style=flat&logo=googlegemini&logoColor=white) ![Google Sheets](https://img.shields.io/badge/Google%20Sheets-34A853?style=flat&logo=googlesheets&logoColor=white) ![License](https://img.shields.io/badge/License-MIT-4B8BBE?style=flat)
-![Google Gemini](https://img.shields.io/badge/Google-Gemini-4285F4?logo=google&logoColor=white)
-![Google Sheets](https://img.shields.io/badge/Google%20Sheets-34A853?logo=googlesheets&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green)
-
+  <img src="https://img.shields.io/badge/Automation-n8n-orange?style=for-the-badge" alt="n8n">
+  <img src="https://img.shields.io/badge/AI-Google%20Gemini-blueviolet?style=for-the-badge" alt="Gemini">
+  <img src="https://img.shields.io/badge/Database-Google%20Sheets-green?style=for-the-badge" alt="Sheets">
+  <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="MIT">
 </p>
 
 <p align="center">
