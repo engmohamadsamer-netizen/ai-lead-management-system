@@ -2,6 +2,10 @@
   <img src="assets/logo-horizontal.png" alt="OXIVAR AI" width="420">
 </p>
 
+<p align="center">
+  <img src="assets/workflow-cover.png" alt="AI Lead Management System Banner" width="100%">
+</p>
+
 <h1 align="center">AI Lead Management System</h1>
 
 <p align="center">
